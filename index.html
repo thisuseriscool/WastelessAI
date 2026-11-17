@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pantry Match – cook with what you have</title>
+  <meta name="description" content="Enter the ingredients you have and see which dishes you can cook, with a match percentage for each.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=3">
+</head>
+<body class="dashboard-page">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="dashboard-header">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">P</span>Pantry Match</a>
+  <nav class="primary-nav" aria-label="Main">
+  <a href="index.html" aria-current="page">Dashboard</a>
+  <a href="chef.html">AI Chef</a>
+</nav>
+  </header>
+
+  <main id="main" class="dashboard-shell">
+    <div class="dashboard-grid">
+      <div class="recipe-column">
+        <section id="pantry" class="studio-panel" aria-labelledby="studio-title">
+          <div class="studio-heading">
+            <p class="eyebrow">RECIPE STUDIO</p>
+            <h1 id="studio-title">Cook smarter with pantry-aware recipe discovery</h1>
+            <p>Browse recipes, see what matches your kitchen, and ask the Chef when you want a fresh idea.</p>
+          </div>
+
+          <div class="studio-tabs" aria-label="Recipe views">
+            <a class="is-active" href="#results" aria-current="page"><span aria-hidden="true">✣</span> Recipe Discover</a>
+            <a href="chef.html"><span aria-hidden="true">✧</span> Recipe Research (AI)</a>
+          </div>
+
+          <form id="ingredient-form" class="pantry-search" autocomplete="off">
+            <label for="ingredient-input">What's in your pantry?</label>
+            <div class="pantry-search__input">
+              <input id="ingredient-input" type="text" placeholder="Add ingredients, separated by commas" enterkeyhint="done">
+              <button type="submit" class="btn"><span aria-hidden="true">＋</span> Add ingredients</button>
+            </div>
+            <ul id="chips" class="chips" aria-label="Added ingredients"></ul>
+          </form>
+
+          <div class="category-row" aria-label="Recipe filters">
+            <button type="button" data-category="quick" aria-pressed="false">Quick dinners</button>
+            <button type="button" data-category="protein" aria-pressed="false">High protein</button>
+            <button type="button" data-category="comfort" aria-pressed="false">Comfort food</button>
+            <button type="button" data-category="vegetarian" aria-pressed="false">Vegetarian</button>
+            <button type="button" data-category="one-pot" aria-pressed="false">One-pot meals</button>
+            <button type="button" data-category="meal-prep" aria-pressed="false">Meal prep</button>
+          </div>
+        </section>
+
+        <section id="results" class="results-panel" aria-labelledby="results-title">
+          <div class="results-heading">
+            <div>
+              <p class="eyebrow">MADE FOR YOUR KITCHEN</p>
+              <h2 id="results-title">Recipes to explore</h2>
+              <p id="results-status" class="status" aria-live="polite">Add pantry ingredients to see match scores.</p>
+            </div>
+            <label class="sort-control" for="recipe-sort">Sort
+              <select id="recipe-sort">
+                <option value="match">Best match</option>
+                <option value="time">Quickest</option>
+              </select>
+            </label>
+          </div>
+          <div id="results-grid" class="results-grid"></div>
+        </section>
+
+        <section class="how-panel" aria-label="Using Pantry Match">
+          <span class="how-mark" aria-hidden="true">✳</span>
+          <p><strong>Good food starts with what you have.</strong> Add ingredients for match scores, or ask the Chef for substitutions and new ideas.</p>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="dashboard-footer">Pantry Match · Recipes are a guide, so check allergens and cooking times yourself.</footer>
+
+  <dialog id="recipe-dialog" class="modal" aria-labelledby="recipe-title">
+  <div class="modal__body">
+    <button type="button" class="modal__close" id="recipe-close" aria-label="Close recipe">×</button>
+    <h2 id="recipe-title"></h2>
+    <p id="recipe-meta" class="modal__meta"></p>
+
+    <h3>Ingredients</h3>
+    <ul id="recipe-ingredients" class="ingredient-list"></ul>
+    <p id="recipe-staples" class="modal__meta"></p>
+
+    <h3>Method</h3>
+    <ol id="recipe-steps" class="method"></ol>
+
+    <h3>Watch</h3>
+    <div id="recipe-video"></div>
+  </div>
+</dialog>
+
+<script type="module" src="js/app.js?v=3"></script>
+
+</body>
+</html>
